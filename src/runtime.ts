@@ -20,7 +20,11 @@ export class VScript {
       
       this.interpreter.interpret(statements);
     } catch (error) {
-      console.error('\x1b[31m%s\x1b[0m', error.message); // 红色错误信息
+      if (error instanceof Error) {
+        console.error('\x1b[31m%s\x1b[0m', error.message); // 红色错误信息
+      } else {
+        console.error('\x1b[31m%s\x1b[0m', '发生未知错误');
+      }
     }
   }
 
